@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfigService } from '../config.service';
+import {AuthService} from '../../services/auth/auth.service';
+import {LoeServerService} from '../../services/loe-server/loeServer.service';
 
 @Component({
   selector: 'app-login-vista',
@@ -7,17 +8,20 @@ import { ConfigService } from '../config.service';
   styleUrls: ['./login-vista.component.sass']
 })
 export class LoginVistaComponent implements OnInit {
-  private username = 'admin';
-  private password = 'pw';
+  username = 'admin';
+  password = 'pw';
 
-  constructor(private config: ConfigService) { }
+  token;
+
+  constructor(private server: LoeServerService, private auth: AuthService) { }
 
   ngOnInit() {
-
+    this.token = this.auth.getToken();
   }
 
   login() {
-    this.config.loginRequest(this.username, this.password);
+    this.server.loginRequest(this.username, this.password);
+    this.token = this.auth.getToken();
   }
 
 }

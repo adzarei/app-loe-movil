@@ -27,7 +27,7 @@ export class ConfigService {
     body.set('username' , user );
     body.set('password' , pass );
 
-    this.http.post(this.getLoginUrl, body.toString()).toPromise().then(function(response) {
+    this.http.post(this.LOGIN_URL, body.toString()).toPromise().then(function(response) {
 
       if (response) {
         localStorage.setItem('authtoken', response.uuid);

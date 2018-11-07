@@ -8,5 +8,11 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+// For the cordova wrapper: we need to wait Cordova to load completely:
+// let onDeviceReady = () => {
+//   platformBrowserDynamic().bootstrapModule(AppModule).catch(err => console.error(err));
+// };
+// document.addEventListener('deviceready', onDeviceReady, false);
+
+// For normal execution.
+ platformBrowserDynamic().bootstrapModule(AppModule).catch(err => console.error(err));

@@ -6,18 +6,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { VistaListaComponent } from './vista-lista/vista-lista.component';
 import { LoginVistaComponent } from './login-vista/login-vista.component';
-import {TokenInterceptor} from './auth/token.interceptor';
-import {WsErrHandlerInterceptor} from './auth/wsErrHandler.interceptor';
+import {TokenInterceptor} from '../interceptors/token.interceptor';
+import {WsErrHandlerInterceptor} from '../interceptors/wsErrHandler.interceptor';
 import { TestComponent } from './test/test.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VistaListaComponent,
     LoginVistaComponent,
-    TestComponent
+    TestComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +34,7 @@ import { TestComponent } from './test/test.component';
   },
     {
     provide: HTTP_INTERCEPTORS,
-      useClass:WsErrHandlerInterceptor,
+      useClass: WsErrHandlerInterceptor,
       multi: true
     }
   ],
