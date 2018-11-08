@@ -11,17 +11,23 @@ export class LoeServerService {
   // TODO: change for token test entry point.
   LIBROS_URL = 'http://localhost:8080/api/v1/libros';
 
-  constructor(private http: HttpClient) {}
+  libros;
 
+  constructor(private http: HttpClient) {}
 
   getLibros = function() {
 
-    var getResponse = this.http.get(this.LIBROS_URL).toPromise().then(function (response) {
-      //debugger;
-      if(response)
-        return response;
+    let promise = new Promise( (resolve, reject) => {
+
+      this.http.get(this.LIBROS_URL)
+        .toPromise()
+        .then( response => {
+          this.libros = response;
+          resolve();
+        })
     });
-    return getResponse
+
+    return promise;
   };
 
 
@@ -31,12 +37,19 @@ export class LoeServerService {
     body.set('username', user);
     body.set('password', pass);
 
-    this.http.post(this.LOGIN_URL, body.toString()).toPromise().then(function (response) {
-
-      if (response) {
-        localStorage.setItem('authtoken', response.uuid);
-      }
+    let promise = new Promise( (resolve, reject) =>
+    {
+      this.http.post(this.LOGIN_URL, body.toString())
+        .toPromise()
+        .then(response => {
+            if (response) {
+              localStorage.setItem('authtoken', response.uuid);
+              resolve();
+            }
+          }
+        );
     });
+    return promise;
   }
 
 }

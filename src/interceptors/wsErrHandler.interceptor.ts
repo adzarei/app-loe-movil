@@ -21,12 +21,26 @@ export class WsErrHandlerInterceptor implements HttpInterceptor {
   }
 
   private handleAuthError(err: HttpErrorResponse): Observable<any> {
+  //debugger;
+    switch (err.status) {
+      case 401: {
 
-    if (err.status === 401) {
-      console.log('handled error ' + err.status);
-      //TODO: redirect to login.
-      this.router.navigate(['test']);
-      return of(err.message);
+        console.log('handled error ' + err.status);
+        //TODO: redirect to login.
+        this.router.navigate(['login']);
+        return of(err.message);
+
+        break
+      }
+
+      case 404: {
+        console.log('handled error ' + err.status);
+        //TODO: redirect to login.
+        this.router.navigate(['login']);
+        return of(err.message);
+
+        break
+      }
     }
     throw err;
   }

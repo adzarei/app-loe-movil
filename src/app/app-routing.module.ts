@@ -8,8 +8,8 @@ const routes: Routes = [
   { path: 'login', component: LoginVistaComponent},
   { path: 'test', component: TestComponent},
   { path: 'home', component: HomeComponent},
-  { path: '', redirectTo: 'login', pathMatch: 'full'}
-  // TODO: Redirect to Home page and if NOT authenticated, redirecTo to LOGIN
+  { path: '', redirectTo: '/login', pathMatch: 'full'}
+  // TODO: Redirect to Home page.
 
 ];
 

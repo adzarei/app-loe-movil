@@ -1,4 +1,7 @@
-<p>
-  <title>This is the home page</title>
-  <p>{{libros | json}}<p>
-</p>
+<p>Home page</p>
+<div>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let libro of server.libros"> {{ libro.obra }} </li>
+  </ul>
+</div>
+

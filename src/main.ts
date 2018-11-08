@@ -15,4 +15,4 @@ if (environment.production) {
 // document.addEventListener('deviceready', onDeviceReady, false);
 
 // For normal execution.
- platformBrowserDynamic().bootstrapModule(AppModule).catch(err => console.error(err));
+platformBrowserDynamic().bootstrapModule(AppModule).catch(err => console.error(err));
