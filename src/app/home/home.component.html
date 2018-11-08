@@ -1,7 +1,31 @@
 <p>Home page</p>
-<div>
-  <ul class="list-group">
-    <li class="list-group-item" *ngFor="let libro of server.libros"> {{ libro.obra }} </li>
-  </ul>
-</div>
+<br/>
+
+<p>Table + button</p>
+<table class="table table-primary" >
+  <thead>
+    <tr *ngFor="let libro of server.libros">
+      <th scope="col" >
+        <button type="button" class="btn btn-primary btn-lg btn-block">{{ libro.obra }}</button>
+      </th>
+    </tr>
+  </thead>
+</table>
+<br/>
+<br/>
+<p>list-groups</p>
+<br/>
+<ul class="list-group" *ngFor="let libro of server.libros">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    {{ libro.obra }}
+    <span class="badge badge-primary badge-pill">{{ libro.numLicencia }}</span>
+  </li>
+</ul>
+
+
+<!--<div>-->
+  <!--<ul class="list-group">-->
+    <!--<li class="list-group-item" *ngFor="let libro of server.libros"> {{ libro.obra }} </li>-->
+  <!--</ul>-->
+<!--</div>-->
 
