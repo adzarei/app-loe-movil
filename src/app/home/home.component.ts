@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {LoeServerService} from '../../services/loe-server/loeServer.service';
+import { LoeServerService } from '../../services/loe-server/loeServer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,18 +8,29 @@ import {LoeServerService} from '../../services/loe-server/loeServer.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  loading: boolean = true;
+  selectedLibro;
+  headerVisible: boolean = true;
 
 
 
-  constructor(private server: LoeServerService) {
+  constructor(public server: LoeServerService, private router: Router) {
 
 
   }
 
   ngOnInit() {
     this.server.getLibros().then( res => {
-      this.server.libros;
+      this.loading = false;
     });
   }
 
+  toggleHideHeader() {
+    this.headerVisible= !this.headerVisible;
+
+  }
+
+  redirectToActa() {
+    this.router.navigate(['actas']);
+  }
 }

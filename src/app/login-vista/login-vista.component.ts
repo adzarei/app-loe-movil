@@ -15,7 +15,7 @@ export class LoginVistaComponent implements OnInit {
   constructor(private server: LoeServerService, private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.auth.getToken();
+    //this.auth.getToken();
   }
 
   login() {

@@ -6,9 +6,9 @@ import {HomeComponent} from './home/home.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginVistaComponent},
-  { path: 'test', component: TestComponent},
   { path: 'home', component: HomeComponent},
-  { path: '', redirectTo: '/login', pathMatch: 'full'}
+  { path: 'actas', component: TestComponent},
+  { path: '', redirectTo: 'home', pathMatch: 'full'}
   // TODO: Redirect to Home page.
 
 ];
