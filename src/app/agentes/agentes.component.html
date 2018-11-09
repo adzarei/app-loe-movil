@@ -8,11 +8,28 @@
   <div for="head menu">
     <ol class="breadcrumb">
       <li  class="breadcrumb-item"><a href="">APP</a></li>
-      <li  class="breadcrumb-item "><a href="home">Libros</a></li>
+      <li  class="breadcrumb-item " (click)="navigateToHome()"><a href="home">Libros</a></li>
       <li  class="breadcrumb-item active">Agentes</li>
     </ol>
   </div>
-  <p>
-    Agentes works!
-  </p>
+  <div class="jumbotron">
+    <h1>Agentes</h1>
+  </div>
+  <div class="jumbotron">
+    <div class="card border-primary mb-3" style="max-width: 30rem;" *ngFor="let agente of server.agentes;">
+      <div class="card-header">{{agente.nombre}}</div>
+      <div class="card-body">
+        <h4 class="card-title">Primary card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <table class="table table-hover">
+          <tbody>
+          <tr *ngFor="let agenteProperty of agente | keyvalue">
+            <td>{{mapAgenteKey(agenteProperty.key)}}</td>
+            <td>{{mapTipoAgente(agenteProperty.value)}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

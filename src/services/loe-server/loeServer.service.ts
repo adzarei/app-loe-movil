@@ -7,11 +7,13 @@ import {HttpClient} from '@angular/common/http';
 export class LoeServerService {
 
   LOGIN_URL = 'http://localhost:8080/auth/users/login';
-
-  // TODO: change for token test entry point.
   LIBROS_URL = 'http://localhost:8080/api/v1/libros';
+  AGENTES_URL = 'http://localhost:8080/api/v1/agentes';
+  ACTAS_URL = "http://localhost:8080/api/v1/actas";
 
   libros;
+  agentes;
+  actas;
 
   constructor(private http: HttpClient) {}
 
@@ -30,6 +32,38 @@ export class LoeServerService {
     return promise;
   };
 
+  getAgentesByLibroId = function(id){
+
+    let promise = new Promise( (resolve, reject) => {
+
+      this.http.get(this.AGENTES_URL+'?libroid='+id)
+        .toPromise()
+        .then( response => {
+          this.agentes = response;
+          resolve();
+        })
+    });
+
+    return promise;
+  }
+
+  getActasByLibroId = function( id ) {
+
+    let promise = new Promise( (resolve, reject) =>
+    {
+      this.http.get(this.ACTAS_URL+'?libroid='+id)
+        .toPromise()
+        .then(response => {
+            if (response) {
+              this.actas = response;
+              resolve();
+            }
+          }
+        );
+    });
+    return promise;
+
+  }
 
   loginRequest = function(user, pass) {
 
@@ -51,5 +85,6 @@ export class LoeServerService {
     });
     return promise;
   }
+
 
 }

@@ -1,7 +1,6 @@
 <div for="loading banner" *ngIf="loading">
   <div class="progress" >
-    <label>LOADING...</label>
-    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+    <div class="progress-bar progress-bar-striped progress-bar-animated"  role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: 75%">LOADING...</div>
   </div>
 </div>
 <div for = "component content" *ngIf="!loading">
@@ -11,8 +10,7 @@
       <li  class="breadcrumb-item active">Libros</li>
     </ol>
   </div>
-
-      <div for="Libros content" *ngIf="headerVisible">
+      <div class="jumbotron" for="Libros content" *ngIf="headerVisible">
           <h1>Mis libros <br/>
             <p class="lead">Selecciona el libro sobre el que trabajar</p>
           </h1>
@@ -28,16 +26,20 @@
                         </div>
                 </div>
       </div>
-  <!--TODO: Choose correct approach.-->
-  <ul class="nav nav-pills">
-    <li class="nav-item">
-      <a class="nav-link active" (click)="toggleHideHeader()">Ocultar</a>
-    </li>
-  </ul>
+
+
+
 
   <!--Contenido del libro selecionado-->
     <!--TODO: Show when libro selected && only show selected libro.-->
-    <div for="Libro details" *ngIf="selectedLibro">
+    <div  for="Libro details" *ngIf="selectedLibro" class="jumbotron">
+      <!--TODO: Choose correct approach: Button, pil, etc...-->
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link active" (click)="toggleHideHeader()">Ocultar</a>
+        </li>
+      </ul>
+
       <div class="card mb-3">
         <h3 class="card-header">Libro de Ordenes y Asistencia: {{ selectedLibro.numlibro }}</h3>
         <img style="height: 200px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image">
@@ -50,7 +52,7 @@
         <!--</div>-->
         <ul class="list-group list-group-flush" >
           <li class="list-group-item" *ngFor="let libroProperty of selectedLibro | keyvalue">
-            {{mapValue(libroProperty.key)}} : {{libroProperty.value}}
+            {{mapLibroKey(libroProperty.key)}} : {{libroProperty.value}}
           </li>
         </ul>
         <div class="card-body">

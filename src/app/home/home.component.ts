@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoeServerService } from '../../services/loe-server/loeServer.service';
 import { Router } from '@angular/router';
-import {DomainMapperService} from '../../services/domainMapper.service';
+import {DataService} from "../../services/data.service";
+import {DomainMapperService} from "../../services/domain-mapper.service";
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   headerVisible: boolean = true;
 
 
-  constructor(public server: LoeServerService, private router: Router, private mapper: DomainMapperService) {
+  constructor(public server: LoeServerService, private router: Router, private mapper: DomainMapperService, private data: DataService) {
 
   }
 
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit {
   }
 
   redirectToActa() {
+    this.saveContextData();
     this.router.navigate(['actas']);
   }
 
@@ -37,9 +39,11 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['agentes'])
   }
 
-  mapValue(key: any) {
-    //debugger;
+  mapLibroKey(key: any) {
     return this.mapper.libro[key];
+  }
 
+  private saveContextData() {
+    this.data.libro = this.selectedLibro;
   }
 }

@@ -1,7 +1,6 @@
 <div for="loading banner" *ngIf="loading">
-  <div class="progress" >
-    <label>LOADING...</label>
-    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">LOADING...</div>
   </div>
 </div>
 <div for = "component content" *ngIf="!loading">
@@ -15,4 +14,12 @@
   <p>
     Actas works!
   </p>
+<!--TODO: CHoose if to use list, cards, or smth else....-->
+  <div class="card border-primary mb-3" style="max-width: 20rem;" *ngFor="let acta of server.actas">
+    <div class="card-header">Acta Nº: {{acta.numHoja}}</div>
+    <div class="card-body">
+      <h4 class="card-title">Información:</h4>
+      <p class="card-text" *ngFor="let actaProperty of acta | keyvalue"> {{actaProperty.key}}: {{actaProperty.value}} </p>
+    </div>
+  </div>
 </div>

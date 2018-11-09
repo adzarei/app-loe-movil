@@ -21,4 +21,24 @@ export class DomainMapperService {
     "flicencia": "FECHA LICENCIA"
   };
 
+  agente = {
+    "tipoAgente": "Tipo de Agente",
+    "nombre": "Nombre",
+    "idFiscal": "DNI/CIF",
+    "titulo": "Título",
+    "ffin": "Fecha de incorporación",
+    "finicio": "Fecha de baja"
+  }
+
+  tipoAgente = {
+    "DO" : "Director de Obra",
+    "DEO" : "Director de Ejecución de Obra",
+    "CONSTRUCTOR" : "Constructor",
+    "CSS" : "Cordinador de Seguridad y Salud",
+    "PROMOTOR" : "Promotor",
+    "PROYECTISTA" : "Proyectista",
+    "OTRO" : "Otro"
+  }
+
+  constructor() { }
 }

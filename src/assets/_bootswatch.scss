@@ -21,7 +21,7 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
     top: 0;
     left: 0;
     margin-left: 0;
-    //@include gradient-radial($color 10%, transparent 10.01%);
+    @include gradient-radial($color 10%, transparent 10.01%);
     background-size: 1000% 1000%;
     background-position: 50%;
     border: none;
@@ -121,13 +121,13 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
 
   &-link {
     box-shadow: none;
-    //color: $link-color;
+    color: $link-color;
 
     &:hover,
     &:focus {
       box-shadow: none;
-      //color: $link-hover-color;
-      //text-decoration: $link-hover-decoration;
+      color: $link-hover-color;
+      text-decoration: $link-hover-decoration;
     }
 
     &.disabled, // Although btn-link is intended for buttons, which want to look like link, I include here a.disable for the sake of consistency
