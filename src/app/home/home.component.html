@@ -48,29 +48,14 @@
         <!--<div class="card-body">-->
           <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
         <!--</div>-->
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item" *ngFor="let property of selectedLibro | keyvalue">
-            {{ property.key}} : {{property.value}}
+        <ul class="list-group list-group-flush" >
+          <li class="list-group-item" *ngFor="let libroProperty of selectedLibro | keyvalue">
+            {{mapValue(libroProperty.key)}} : {{libroProperty.value}}
           </li>
         </ul>
         <div class="card-body">
-          <button class="clicable"  class="card-link" (click)="redirectToActa()">Ver Actas</button>
-          <a class="clicable" class="card-link">OTRA OPCIÓN</a>
+          <button  class="card-link" (click)="redirectToActa()">Ver Actas</button>
+          <button  class="card-link" (click)="redirectToAgentes()">Ver Agentes</button>
         </div>
-        <div class="card-footer text-muted">
-          2 days ago
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
-        </div>
-      </div>
-
-
     </div>
 </div>

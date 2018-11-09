@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoeServerService } from '../../services/loe-server/loeServer.service';
 import { Router } from '@angular/router';
+import {DomainMapperService} from '../../services/domainMapper.service';
 
 @Component({
   selector: 'app-home',
@@ -13,9 +14,7 @@ export class HomeComponent implements OnInit {
   headerVisible: boolean = true;
 
 
-
-  constructor(public server: LoeServerService, private router: Router) {
-
+  constructor(public server: LoeServerService, private router: Router, private mapper: DomainMapperService) {
 
   }
 
@@ -32,5 +31,15 @@ export class HomeComponent implements OnInit {
 
   redirectToActa() {
     this.router.navigate(['actas']);
+  }
+
+  redirectToAgentes() {
+    this.router.navigate(['agentes'])
+  }
+
+  mapValue(key: any) {
+    //debugger;
+    return this.mapper.libro[key];
+
   }
 }

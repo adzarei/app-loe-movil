@@ -11,13 +11,17 @@ import {TokenInterceptor} from '../interceptors/token.interceptor';
 import {WsErrHandlerInterceptor} from '../interceptors/wsErrHandler.interceptor';
 import { TestComponent } from './test/test.component';
 import { HomeComponent } from './home/home.component';
+import { AgentesComponent } from './agentes/agentes.component';
+import { ActasComponent } from './actas/actas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginVistaComponent,
     TestComponent,
-    HomeComponent
+    HomeComponent,
+    AgentesComponent,
+    ActasComponent
   ],
   imports: [
     BrowserModule,
