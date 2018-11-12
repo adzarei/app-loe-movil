@@ -10,10 +10,12 @@ export class LoeServerService {
   LIBROS_URL = 'http://localhost:8080/api/v1/libros';
   AGENTES_URL = 'http://localhost:8080/api/v1/agentes';
   ACTAS_URL = "http://localhost:8080/api/v1/actas";
+  ORDENES_URL = "http://localhost:8080/api/v1/ordenes";
 
   libros;
   agentes;
   actas;
+  nextNumHoja;
 
   constructor(private http: HttpClient) {}
 
@@ -63,6 +65,39 @@ export class LoeServerService {
     });
     return promise;
 
+  }
+
+  getOrdenesByOrdenId = function( id ) {
+
+    let promise = new Promise( (resolve, reject) =>
+    {
+      this.http.get(this.ORDENES_URL+'?actaid='+id)
+        .toPromise()
+        .then(response => {
+            if (response) {
+              this.ordenes = response;
+              resolve();
+            }
+          }
+        );
+    });
+    return promise;
+  }
+
+  getNextNumHoja(libroId){
+    let promise = new Promise( (resolve, reject) =>
+    {
+      this.http.get(this.ACTAS_URL+'/next-numHoja?libroid='+libroId)
+        .toPromise()
+        .then(response => {
+            if (response) {
+              this.nextNumHoja = response;
+              resolve();
+            }
+          }
+        );
+    });
+    return promise;
   }
 
   loginRequest = function(user, pass) {

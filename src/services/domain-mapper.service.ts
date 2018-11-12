@@ -40,5 +40,13 @@ export class DomainMapperService {
     "OTRO" : "Otro"
   }
 
+  tipoActa = {
+    "INSPECION_PREVIA" : "Inspección Previa",
+    "INICIO" : "Acta de inicio",
+    "FIN" : "Acta de final de obra",
+    "OBRA" : "Acta de obra",
+    "OTRO" : "Otro"
+  }
+
   constructor() { }
 }

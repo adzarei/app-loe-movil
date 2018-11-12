@@ -13,6 +13,8 @@ import { TestComponent } from './test/test.component';
 import { HomeComponent } from './home/home.component';
 import { AgentesComponent } from './agentes/agentes.component';
 import { ActasComponent } from './actas/actas.component';
+import { ActaEditComponent } from './acta-edit/acta-edit.component';
+import { OrdenEditComponent } from './orden-edit/orden-edit.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ActasComponent } from './actas/actas.component';
     TestComponent,
     HomeComponent,
     AgentesComponent,
-    ActasComponent
+    ActasComponent,
+    ActaEditComponent,
+    OrdenEditComponent
   ],
   imports: [
     BrowserModule,

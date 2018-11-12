@@ -30,13 +30,18 @@ export class HomeComponent implements OnInit {
 
   }
 
-  redirectToActa() {
+  redirectToActas() {
     this.saveContextData();
     this.router.navigate(['actas']);
   }
 
   redirectToAgentes() {
-    this.router.navigate(['agentes'])
+    this.router.navigate(['agentes']);
+  }
+
+  redirectToActaEdit() {
+    this.saveContextData();
+    this.router.navigate(['acta-edit']);
   }
 
   mapLibroKey(key: any) {
@@ -46,4 +51,6 @@ export class HomeComponent implements OnInit {
   private saveContextData() {
     this.data.libro = this.selectedLibro;
   }
+
+
 }
