@@ -1,0 +1,70 @@
+<div for="loading banner" *ngIf="loading">
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">LOADING...</div>
+  </div>
+</div>
+<div for = "component content" *ngIf="!loading">
+  <div for="head menu">
+    <ol class="breadcrumb">
+      <li  class="breadcrumb-item"><a href="">APP</a></li>
+      <li  class="breadcrumb-item " (click)="redirectToHome()"><a href="home">Libros</a></li>
+      <li  class="breadcrumb-item active">Nuevo Acta</li>
+    </ol>
+  </div>
+  <div  class="jumbotron">
+    <h1>Nuevo Acta</h1>
+
+    <div class="card mb-3">
+      <h3 class="card-header">Hoja Nº: {{numHoja}}  -  Fecha: {{hoy}}</h3>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div class="form-group">
+            <label class="col-form-label" for="selectTipoActa">Tipo de Acta</label>
+            <select id="selectTipoActa" class="custom-select" [ngModel]="selectedTipoActa">
+              <option selected="">Selecciona el Tipo de Acta</option>
+              <option value="{{tipo.key}}" *ngFor="let tipo of tiposDeActa | keyvalue">{{tipo.value}}</option>
+            </select>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="form-group">
+            <label class="col-form-label" for="inputDefault1">Descripción del tipo de acta</label>
+            <input type="text" class="form-control" placeholder="Acta de tipo ... para ..." id="inputDefault1" [(ngModel)]="descTipoActa">
+          </div>
+        </li>
+      </ul>
+      <div class="card-footer text-muted">
+        <button type="button" class="btn btn-outline-danger" (click)="redirectToHome()">Cancelar</button>
+        <button type="button" class="btn btn-outline-primary" (click)="saveActa()">Guardar Acta</button>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <h3 class="card-header">Ordenes</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr scope="col" class="table-active">
+            <th scope="col">Nº de Orden</th>
+            <td scope="col">Título</td>
+            <td scope="col">Contenido</td>
+          </tr>
+        </thead>
+        <tbody [(ngModel)]="ordenes">
+          <tr class="table-secondary" *ngIf="!ordenes">
+            <td>No hay datos</td>
+            <td>No hay datos</td>
+            <td>No hay datos</td>
+          </tr>
+        <tr class="table-secondary" *ngFor="let orden of ordenes">
+          <th>orden.numOrden</th>
+          <td>orden.tituloOrden</td>
+          <td>orden.contenido</td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="card-footer text-muted">
+        <button type="button" class="btn btn-outline-info" (click)="redirectToViewOrden()">Ver Orden</button>
+        <button type="button" class="btn btn-outline-primary" (click)="redirectToEditOrden()">Nueva Orden</button>
+      </div>
+    </div>
+  </div>
+</div>

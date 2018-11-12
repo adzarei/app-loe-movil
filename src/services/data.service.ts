@@ -9,6 +9,7 @@ export class DataService {
   acta;
   orden;
   agente;
+  ordenes: Array = new Array<any>();
 
 
   constructor() { }
